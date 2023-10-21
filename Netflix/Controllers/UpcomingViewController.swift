@@ -7,12 +7,12 @@
 
 import UIKit
 
-class UpcomingViewController: UIViewController {
+final class UpcomingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBackground
     }
     
 
