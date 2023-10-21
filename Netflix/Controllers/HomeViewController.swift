@@ -9,7 +9,7 @@ import UIKit
 
 final class HomeViewController: UIViewController  {
     
-    let sectionTitles: [String] = ["Trending Movies", "Popular", "Trending Tv", "Upcoming Movies", "Top Rated"]
+    let sectionTitles: [String] = ["Trending Movies", "Trending Tv", "Popular", "Upcoming Movies", "Top Rated"]
 
     private let homeFeedTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -29,6 +29,8 @@ final class HomeViewController: UIViewController  {
         
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeFeedTable.tableHeaderView = headerView
+        
+        fetchData()
     }
     
     private func configureNavBar(){
@@ -48,6 +50,32 @@ final class HomeViewController: UIViewController  {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTable.frame = view.bounds
+    }
+    
+    private func fetchData() {
+//        ApiCaller.shared.getTrendingMovies { results in
+//            switch results{
+//            case .success(let movies):
+//                print(movies)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+        
+//        ApiCaller.shared.getTrendingTVs { results in
+//            switch results{
+//                case .success(let movies):
+//                    print(movies)
+//                case .failure(let error):
+//                    print(error)
+//            }
+//        }
+//
+        ApiCaller.shared.getTopRated{ _ in
+            
+        }
+        
+        
     }
     
 }
@@ -82,7 +110,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         guard let header = view as? UITableViewHeaderFooterView else {return}
         header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
         header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
-        header.textLabel?.text = header.textLabel?.text?.lowercased()
+        header.textLabel?.text = header.textLabel?.text?.capitalizeFirstLetter()
         header.textLabel?.textColor = .white
     }
     
