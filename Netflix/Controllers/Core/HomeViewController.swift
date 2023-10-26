@@ -163,3 +163,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
 }
+
+#Preview{
+    HomeViewController()
+}
