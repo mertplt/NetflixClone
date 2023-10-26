@@ -64,6 +64,4 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate,UICollectionView
         cell.configure(with: model)
         return cell
     }
-    
-    
 }
